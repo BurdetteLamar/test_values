@@ -7,7 +7,7 @@ class StringValues < ValuesBase
     self.verify_class('base_string', String, base_string)
     if size < 0
       message = "Parameter size must be nonnegative, not #{size}"
-      raise ArgumentError.new(message)
+      raise RangeError.new(message)
     end
     return '' if size == 0
     s = base_string

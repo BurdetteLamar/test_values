@@ -19,10 +19,17 @@ class StringValuesTest < Minitest::Test
       assert_equal(expected, actual, "size=#{size} base_string=#{base_string}")
     end
     [
+        ['a', 'x'],
         [1, 1],
-        ['a', 'x']
     ].each do |args|
       e = assert_raises(TypeError) do
+        StringValues.string_of_size(*args)
+      end
+    end
+    [
+        [-1, 'x'],
+    ].each do |args|
+      e = assert_raises(RangeError) do
         StringValues.string_of_size(*args)
       end
     end
