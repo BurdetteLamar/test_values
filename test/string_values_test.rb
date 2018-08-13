@@ -68,4 +68,35 @@ class StringValuesTest < Minitest::Test
     end
   end
 
+  def test_strings_not_in_length_range
+    base_string = 'x'
+    expected = {}
+    [
+        (1..15),
+        (4..7),
+    ].each do |range|
+      expected.store(:too_short, base_string * range.first.pred)
+      expected.store(:too_long, base_string * range.last.succ)
+      actual = StringValues.strings_not_in_length_range(range)
+      assert_equal(expected, actual, "range=#{range}")
+    end
+    {
+        ['x', 'x'] => /range/,
+        [(0..4), 1] => /base_string/,
+    }.each_pair do |args, regexp|
+      e = assert_raises(TypeError) do
+        StringValues.strings_not_in_length_range(*args)
+      end
+      assert_match(regexp, e.message)
+    end
+    {
+        (-1..10) => /size/,
+    }.each_pair do |range, regexp|
+      e = assert_raises(RangeError) do
+        StringValues.strings_not_in_length_range(range)
+      end
+      assert_match(regexp, e.message)
+    end
+  end
+
 end

@@ -18,7 +18,7 @@ class StringValues < ValuesBase
     return s[0..size-1]
   end
 
-  # Return strings of maximum and minimum length for range.
+  # Return strings of minimum and maximum length for range.
   def self.strings_in_length_range(range, base_string=BASE_STRING)
     self.verify_class('range', Range, range)
     {
@@ -27,6 +27,13 @@ class StringValues < ValuesBase
     }
   end
 
-
+    # Return string outside of minimum and maximum length for range.
+  def self.strings_not_in_length_range(range, base_string=BASE_STRING)
+    self.verify_class('range', Range, range)
+    {
+        :too_short => self.string_of_size(range.first - 1, base_string),
+        :too_long => self.string_of_size(range.last + 1, base_string),
+    }
+  end
 
 end
