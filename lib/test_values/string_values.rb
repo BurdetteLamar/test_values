@@ -12,10 +12,7 @@ class StringValues < ValuesBase
   def self.string_of_size(size, base_string=BASE_STRING)
     self.verify_class('size', Integer, size)
     self.verify_class('base_string', String, base_string)
-    if size < 0
-      message = "Parameter size must be nonnegative, not #{size}"
-      raise RangeError.new(message)
-    end
+    self.verify_integer_size('size', (0..Float::INFINITY), size)
     return '' if size == 0
     s = base_string
     while s.size < size
