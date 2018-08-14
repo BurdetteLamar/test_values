@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    test_values (0.1.0.pre)
+    test_values (0.2.0)
 
 GEM
   remote: https://rubygems.org/
