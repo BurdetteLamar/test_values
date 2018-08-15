@@ -1,4 +1,4 @@
-Run options: --seed 38676
+Run options: --seed 42602
 
 # Running:
 
@@ -7,6 +7,6 @@ Name "xxx" should raise an exception because it is too_short.
 Name "xxxxxxxxx" should raise an exception because it is too_long.
 .
 
-Finished in 0.001445s, 692.1637 runs/s, 1384.3273 assertions/s.
+Finished in 0.001443s, 693.1102 runs/s, 1386.2204 assertions/s.
 
 1 runs, 2 assertions, 0 failures, 0 errors, 0 skips

@@ -1,6 +1,6 @@
 #### Simple
 
-```code.rb```:
+```example.rb```:
 ```ruby
 require 'test_values'
 

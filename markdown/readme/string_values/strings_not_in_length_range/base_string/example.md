@@ -1,6 +1,6 @@
 #### Base String
 
-```code.rb```:
+```example.rb```:
 ```ruby
 require 'test_values'
 

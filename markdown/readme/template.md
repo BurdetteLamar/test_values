@@ -1,25 +1,9 @@
 # Test Values
 
-## Overview
+This project makes it easy to generate certain kinds of values for testing software.
 
-This project makes it easy to generate values for testing software.
+@[:markdown](values_as_hash/template.md)
 
-### Scalars
-
-Generally speaking, a method whose name is singular returns a scalar object.
-
-Thus method call
-
-```ruby
-StringValues.string_of_size(5)
-```
- 
-returns the ```String``` object 
-
-```ruby
-"xxxxx"
-```
-
-@{:markdown](hash_values/template.md)
+@[:markdown](value_as_scalar/template.md)
 
 @[:markdown](string_values/template.md)

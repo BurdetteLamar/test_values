@@ -1,5 +1,5 @@
 #### Base String
 
-@[ruby](code.rb)
+@[ruby](example.rb)
 
 @[:code_block](output.txt)
