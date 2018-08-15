@@ -1,0 +1,31 @@
+namespace :build do
+  desc 'Build README.md'
+  task :readme do
+    def make_markdown
+      if File.exist?('code.rb')
+        system('ruby code.rb > output.txt')
+        system('markdown_helper include --pristine template.md example.md')
+      end
+    end
+    rakefile_path = __FILE__
+    rakedir_path = File.dirname(rakefile_path)
+    class_dir_paths = Dir.glob('*').select {|f| File.directory? f}
+    class_dir_paths.each do |class_dir_path|
+      Dir.chdir(class_dir_path) do
+        make_markdown
+        method_dir_paths = Dir.glob('*').select {|f| File.directory? f}
+        method_dir_paths.each do |method_dir_path|
+          Dir.chdir(method_dir_path) do
+            make_markdown
+            example_dir_paths = Dir.glob('*').select {|f| File.directory? f}
+            example_dir_paths.each do |example_dir_path|
+              Dir.chdir(example_dir_path) do
+                make_markdown
+              end
+            end
+          end
+        end
+      end
+    end
+  end
+end

@@ -1,0 +1,12 @@
+Run options: --seed 38676
+
+# Running:
+
+Values: {:too_short=>"xxx", :too_long=>"xxxxxxxxx"}
+Name "xxx" should raise an exception because it is too_short.
+Name "xxxxxxxxx" should raise an exception because it is too_long.
+.
+
+Finished in 0.001445s, 692.1637 runs/s, 1384.3273 assertions/s.
+
+1 runs, 2 assertions, 0 failures, 0 errors, 0 skips
