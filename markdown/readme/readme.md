@@ -1,6 +1,6 @@
 # Test Values
 
-This project makes it easy to generate certain kinds of values for testing software.
+This project makes it easy to generate _and utilize_ certain kinds of values for testing software.
 
 ### Values As Hash
 
@@ -51,7 +51,7 @@ end
 
 ```output.txt```:
 ```
-Run options: --seed 42602
+Run options: --seed 20663
 
 # Running:
 
@@ -60,14 +60,14 @@ Name "xxx" should raise an exception because it is too_short.
 Name "xxxxxxxxx" should raise an exception because it is too_long.
 .
 
-Finished in 0.001443s, 693.1102 runs/s, 1386.2204 assertions/s.
+Finished in 0.001403s, 712.8071 runs/s, 1425.6143 assertions/s.
 
 1 runs, 2 assertions, 0 failures, 0 errors, 0 skips
 ```
 
 ### Value As Scalar
 
-Generally speaking, a values method whose name is plural returns a scalar, usually a number or string.
+Generally speaking, a values method whose name is singular returns a scalar, usually a number or string.
 
 ```example.rb```:
 ```ruby
