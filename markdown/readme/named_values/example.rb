@@ -7,14 +7,14 @@ class MyTest < Minitest::Test
   def test_bad_item_length
     items = MyItems.new
     values  = StringValues.strings_not_in_length_range((4..8))
-    puts "Values: #{values.inspect}"
+    puts "Testing with values #{values.inspect}"
     values.each_pair do |name, value|
       message = "Value #{value.inspect} should raise an exception because it is #{name}."
-      puts message
-      assert_raises(ArgumentError, message) do
+      puts "\n#{message}"
+      e = assert_raises(ArgumentError, message) do
         items.add_item(value)
-        puts 'OK'
       end
+      puts "Got exception #{e.inspect}"
     end
 
   end
@@ -29,7 +29,7 @@ class MyItems
     self.items = []
   end
 
-  def add_name(item)
+  def add_item(item)
     raise ArgumentError.new(item) unless (4..8).include?(item.size)
     items.push(item)
   end
