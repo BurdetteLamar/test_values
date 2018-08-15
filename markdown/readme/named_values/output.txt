@@ -1,4 +1,4 @@
-Run options: --seed 51625
+Run options: --seed 434
 
 # Running:
 
@@ -11,6 +11,6 @@ Value "xxxxxxxxx" should raise an exception because it is too_long.
 Got exception #<ArgumentError: xxxxxxxxx>
 .
 
-Finished in 0.001466s, 681.9161 runs/s, 1363.8323 assertions/s.
+Finished in 0.001509s, 662.6519 runs/s, 1325.3038 assertions/s.
 
 1 runs, 2 assertions, 0 failures, 0 errors, 0 skips

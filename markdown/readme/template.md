@@ -6,6 +6,6 @@ This project makes it easy to generate _and utilize_ certain kinds of values for
 
 ## Classes
 
-- [StringValues](#string-values)
+- [StringValues](#class-stringvalues)
 
 @[:markdown](classes/string_values/template.md)
