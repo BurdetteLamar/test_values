@@ -1,0 +1,21 @@
+Run options: --seed 54795
+
+# Running:
+
+Values: {:too_short=>"xxx", :too_long=>"xxxxxxxxx"}
+Value "xxx" should raise an exception because it is too_short.
+F
+
+Finished in 0.001641s, 609.4101 runs/s, 609.4101 assertions/s.
+
+  1) Failure:
+MyTest#test_bad_item_length [example.rb:14]:
+Value "xxx" should raise an exception because it is too_short..
+[ArgumentError] exception expected, not
+Class: <NoMethodError>
+Message: <"undefined method `add_item' for #<MyItems:0x00000002b987f8 @items=[]>">
+---Backtrace---
+example.rb:15:in `block (2 levels) in test_bad_item_length'
+---------------
+
+1 runs, 1 assertions, 1 failures, 0 errors, 0 skips
