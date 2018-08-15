@@ -1,5 +1,7 @@
 # Test Values
 
+[![Gem](https://img.shields.io/gem/v/markdown_helper.svg?style=flat)](http://rubygems.org/gems/markdown_helper "View this project in Rubygems")
+
 This project makes it easy to generate _and utilize_ certain kinds of values for testing software.
 
 ## Named Values
@@ -51,7 +53,7 @@ end
 
 ```output.txt```:
 ```
-Run options: --seed 57975
+Run options: --seed 36234
 
 # Running:
 
@@ -64,7 +66,7 @@ Value "xxxxxxxxx" should raise an exception because it is too_long.
 Got exception #<ArgumentError: xxxxxxxxx>
 .
 
-Finished in 0.001552s, 644.4457 runs/s, 1288.8915 assertions/s.
+Finished in 0.001601s, 624.4310 runs/s, 1248.8620 assertions/s.
 
 1 runs, 2 assertions, 0 failures, 0 errors, 0 skips
 ```
