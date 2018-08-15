@@ -3,10 +3,18 @@ require 'find'
 namespace :build do
   desc 'Build README.md'
   task :readme do
-
-    def build_markdown_examples
+    dir_path = File.dirname(__FILE__)
+    Dir.chdir(dir_path) do
       ruby_file_name = 'example.rb'
       template_file_name = 'template.md'
+      readme_file_path = File.join(
+                                 dir_path,
+                                 '..',
+                                 '..',
+                                 'README.md',
+      )
+      readme_file_path = File.absolute_path(readme_file_path)
+      puts readme_file_path
       Find.find('.') do |path|
         next unless File.directory?(path)
         Dir.chdir(path) do
@@ -16,16 +24,7 @@ namespace :build do
           end
         end
       end
-    end
-
-    def build_readme
-      system('markdown_helper include --pristine template.md readme.md')
-    end
-
-    dir = File.dirname(__FILE__)
-    Dir.chdir(dir) do
-      build_markdown_examples
-      build_readme
+      system("markdown_helper include --pristine #{template_file_name} #{readme_file_path}")
     end
   end
 end
