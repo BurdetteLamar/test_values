@@ -30,7 +30,7 @@ class MyItems
   end
 
   def add_item(item)
-    raise ArgumentError.new(item) unless (4..8).include?(item.size)
+    raise ArgumentError.new(item) unless (4..8).include?(item.length)
     items.push(item)
   end
 

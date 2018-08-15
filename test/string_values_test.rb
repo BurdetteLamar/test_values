@@ -3,10 +3,10 @@ require 'test_helper'
 class StringValuesTest < Minitest::Test
 
   def test_string_of_length
-    [0, 1, 3, 7].each do |size|
-      expected = 'x' * size
-      actual = StringValues.string_of_size(size)
-      assert_equal(expected, actual, "size=#{size}")
+    [0, 1, 3, 7].each do |length|
+      expected = 'x' * length
+      actual = StringValues.string_of_length(length)
+      assert_equal(expected, actual, "length=#{length}")
     end
     base_string = 'abc'
     {
@@ -14,24 +14,24 @@ class StringValuesTest < Minitest::Test
         1 =>  'a',
         3 =>  'abc',
         7 =>  'abcabca',
-    }.each_pair do |size, expected|
-      actual = StringValues.string_of_size(size, base_string)
-      assert_equal(expected, actual, "size=#{size} base_string=#{base_string}")
+    }.each_pair do |length, expected|
+      actual = StringValues.string_of_length(length, base_string)
+      assert_equal(expected, actual, "length=#{length} base_string=#{base_string}")
     end
     {
-        ['a', 'x'] => /size/,
+        ['a', 'x'] => /length/,
         [1, 1] => /base_string/,
     }.each_pair do |args, regexp|
       e = assert_raises(TypeError) do
-        StringValues.string_of_size(*args)
+        StringValues.string_of_length(*args)
       end
       assert_match(regexp, e.message)
     end
     {
-        [-1, 'x'] => /size/,
+        [-1, 'x'] => /length/,
     }.each_pair do |args, regexp|
       e = assert_raises(RangeError) do
-        StringValues.string_of_size(*args)
+        StringValues.string_of_length(*args)
       end
       assert_match(regexp, e.message)
     end
@@ -59,7 +59,7 @@ class StringValuesTest < Minitest::Test
       assert_match(regexp, e.message)
     end
     {
-        (-1..10) => /size/,
+        (-1..10) => /length/,
     }.each_pair do |range, regexp|
       e = assert_raises(RangeError) do
         StringValues.strings_in_length_range(range)
@@ -90,7 +90,7 @@ class StringValuesTest < Minitest::Test
       assert_match(regexp, e.message)
     end
     {
-        (-1..10) => /size/,
+        (-1..10) => /length/,
     }.each_pair do |range, regexp|
       e = assert_raises(RangeError) do
         StringValues.strings_not_in_length_range(range)

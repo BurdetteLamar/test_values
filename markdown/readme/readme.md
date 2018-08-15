@@ -42,7 +42,7 @@ class MyItems
   end
 
   def add_item(item)
-    raise ArgumentError.new(item) unless (4..8).include?(item.size)
+    raise ArgumentError.new(item) unless (4..8).include?(item.length)
     items.push(item)
   end
 
@@ -51,7 +51,7 @@ end
 
 ```output.txt```:
 ```
-Run options: --seed 434
+Run options: --seed 24120
 
 # Running:
 
@@ -64,7 +64,7 @@ Value "xxxxxxxxx" should raise an exception because it is too_long.
 Got exception #<ArgumentError: xxxxxxxxx>
 .
 
-Finished in 0.001509s, 662.6519 runs/s, 1325.3038 assertions/s.
+Finished in 0.001521s, 657.4920 runs/s, 1314.9840 assertions/s.
 
 1 runs, 2 assertions, 0 failures, 0 errors, 0 skips
 ```
@@ -79,7 +79,7 @@ Finished in 0.001509s, 662.6519 runs/s, 1325.3038 assertions/s.
 
 - [strings_in_length_range](#method-strings_in_length_range)
 - [strings_not_in_length_range](#method-strings_not_in_length_range)
-- [string_of_size](#method-string_of_size)
+- [string_of_length](#method-string_of_length)
 
 #### Method ```strings_in_length_range```
 
@@ -145,7 +145,7 @@ p values
 {:too_short=>"abc", :too_long=>"abcabcabcab"}
 ```
 
-#### Method ```string_of_size```
+#### Method ```string_of_length```
 
 ##### Simple
 
@@ -153,7 +153,7 @@ p values
 ```ruby
 require 'test_values'
 
-s = StringValues.string_of_size(5)
+s = StringValues.string_of_length(5)
 p s
 ```
 
@@ -168,7 +168,7 @@ p s
 ```ruby
 require 'test_values'
 
-s = StringValues.string_of_size(5, 'abc')
+s = StringValues.string_of_length(5, 'abc')
 p s
 ```
 
