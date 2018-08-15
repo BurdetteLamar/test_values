@@ -47,7 +47,7 @@ end
 
 ```output.txt```:
 ```
-Run options: --seed 36234
+Run options: --seed 24259
 
 # Running:
 
@@ -60,7 +60,7 @@ Value "xxxxxxxxx" should raise an exception because it is too_long.
 Got exception #<ArgumentError: xxxxxxxxx>
 .
 
-Finished in 0.001601s, 624.4310 runs/s, 1248.8620 assertions/s.
+Finished in 0.001529s, 653.9277 runs/s, 1307.8554 assertions/s.
 
 1 runs, 2 assertions, 0 failures, 0 errors, 0 skips
 ```
