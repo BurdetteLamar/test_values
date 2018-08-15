@@ -1,4 +1,4 @@
-#### Base String
+##### Base String
 
 ```example.rb```:
 ```ruby

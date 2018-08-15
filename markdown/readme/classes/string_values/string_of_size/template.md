@@ -1,4 +1,4 @@
-### Method ```string_of_size```
+#### Method ```string_of_size```
 
 @[:markdown](simple/template.md)
 

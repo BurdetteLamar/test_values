@@ -51,7 +51,7 @@ end
 
 ```output.txt```:
 ```
-Run options: --seed 41051
+Run options: --seed 51625
 
 # Running:
 
@@ -64,16 +64,26 @@ Value "xxxxxxxxx" should raise an exception because it is too_long.
 Got exception #<ArgumentError: xxxxxxxxx>
 .
 
-Finished in 0.001469s, 680.6333 runs/s, 1361.2665 assertions/s.
+Finished in 0.001466s, 681.9161 runs/s, 1363.8323 assertions/s.
 
 1 runs, 2 assertions, 0 failures, 0 errors, 0 skips
 ```
 
-## Class ```StringValues```
+## Classes
 
-### Method ```strings_in_length_range```
+- [StringValues](#string-values)
 
-#### Simple
+### Class ```StringValues```
+
+#### Methods
+
+- [strings_in_length_range](#method-strings_in_length_range)
+- [strings_not_in_length_range](#method-strings_not_in_length_range)
+- [string_of_size](#method-string_of_size)
+
+#### Method ```strings_in_length_range```
+
+##### Simple
 
 ```example.rb```:
 ```ruby
@@ -88,7 +98,7 @@ p values
 {:min_length=>"xxxx", :max_length=>"xxxxxxxxxx"}
 ```
 
-#### Base String
+##### Base String
 
 ```example.rb```:
 ```ruby
@@ -103,9 +113,9 @@ p values
 {:min_length=>"abca", :max_length=>"abcabcabca"}
 ```
 
-### Method ```strings_not_in_length_range```
+#### Method ```strings_not_in_length_range```
 
-#### Simple
+##### Simple
 
 ```example.rb```:
 ```ruby
@@ -120,7 +130,7 @@ p values
 {:too_short=>"xxx", :too_long=>"xxxxxxxxxxx"}
 ```
 
-#### Base String
+##### Base String
 
 ```example.rb```:
 ```ruby
@@ -135,9 +145,9 @@ p values
 {:too_short=>"abc", :too_long=>"abcabcabcab"}
 ```
 
-### Method ```string_of_size```
+#### Method ```string_of_size```
 
-#### Simple
+##### Simple
 
 ```example.rb```:
 ```ruby
@@ -152,7 +162,7 @@ p s
 "xxxxx"
 ```
 
-#### Base String
+##### Base String
 
 ```example.rb```:
 ```ruby

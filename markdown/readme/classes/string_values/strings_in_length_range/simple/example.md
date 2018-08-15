@@ -1,4 +1,4 @@
-#### Simple
+##### Simple
 
 ```example.rb```:
 ```ruby
