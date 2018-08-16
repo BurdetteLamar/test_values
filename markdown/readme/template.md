@@ -11,3 +11,7 @@ This project makes it easy to generate _and utilize_ certain kinds of values for
 - [StringValues](#class-stringvalues)
 
 @[:markdown](classes/string_values/template.md)
+
+- [NumericValues](#class-numericvalues)
+
+@[:markdown](classes/numeric_values/template.md)

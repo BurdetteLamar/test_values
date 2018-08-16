@@ -53,7 +53,7 @@ end
 
 ```output.txt```:
 ```
-Run options: --seed 5687
+Run options: --seed 34891
 
 # Running:
 
@@ -66,7 +66,7 @@ Value "xxxxxxxxx" should raise an exception because it is too_long.
 Got exception #<ArgumentError: xxxxxxxxx>
 .
 
-Finished in 0.001504s, 664.7380 runs/s, 1329.4761 assertions/s.
+Finished in 0.001453s, 688.0272 runs/s, 1376.0543 assertions/s.
 
 1 runs, 2 assertions, 0 failures, 0 errors, 0 skips
 ```
@@ -177,4 +177,46 @@ p s
 ```output.txt```:
 ```
 "abcab"
+```
+
+- [NumericValues](#class-numericvalues)
+
+### Class ```NumericValues```
+
+#### Methods
+
+- [numerics_in_range](#method-numerics_in_range)
+- [numerics_not_in_range](#method-numerics_not_in_range)
+
+#### Method ```numerics_in_range```
+
+##### Simple
+
+```example.rb```:
+```ruby
+require 'test_values'
+
+values = NumericValues.numerics_in_range((4..10))
+p values
+```
+
+```output.txt```:
+```
+{:min_value=>4, :max_value=>10}
+```
+#### Method ```numerics_not_in_range```
+
+##### Simple
+
+```example.rb```:
+```ruby
+require 'test_values'
+
+values = NumericValues.numerics_not_in_range((4..10))
+p values
+```
+
+```output.txt```:
+```
+{:too_small=>3, :too_large=>11}
 ```
