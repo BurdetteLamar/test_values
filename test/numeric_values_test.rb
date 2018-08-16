@@ -46,7 +46,6 @@ class NumericValuesTest < Minitest::Test
         assert_equal([:too_small, :too_large], actual_values.keys)
         assert_operator(actual_values.fetch(:too_small), :<, range.first)
         assert_operator(actual_values.fetch(:too_large), :>, range.last)
-        p [range, actual_values]
       end
     end
     {
