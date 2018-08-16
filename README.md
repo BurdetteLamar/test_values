@@ -53,7 +53,7 @@ end
 
 ```output.txt```:
 ```
-Run options: --seed 34891
+Run options: --seed 37303
 
 # Running:
 
@@ -66,13 +66,14 @@ Value "xxxxxxxxx" should raise an exception because it is too_long.
 Got exception #<ArgumentError: xxxxxxxxx>
 .
 
-Finished in 0.001453s, 688.0272 runs/s, 1376.0543 assertions/s.
+Finished in 0.001486s, 672.8597 runs/s, 1345.7193 assertions/s.
 
 1 runs, 2 assertions, 0 failures, 0 errors, 0 skips
 ```
 
 ## Classes
 
+- [NumericValues](#class-numericvalues)
 - [StringValues](#class-stringvalues)
 
 ### Class ```StringValues```
@@ -190,7 +191,7 @@ p s
 
 #### Method ```numerics_in_range```
 
-##### Simple
+##### Integer Range
 
 ```example.rb```:
 ```ruby
@@ -204,9 +205,39 @@ p values
 ```
 {:min_value=>4, :max_value=>10}
 ```
+
+##### Float Range
+
+```example.rb```:
+```ruby
+require 'test_values'
+
+values = NumericValues.numerics_in_range((4.5..10.5))
+p values
+```
+
+```output.txt```:
+```
+{:min_value=>4.5, :max_value=>10.5}
+```
+
+##### Mixed Range
+
+```example.rb```:
+```ruby
+require 'test_values'
+
+values = NumericValues.numerics_in_range((4..10.5))
+p values
+```
+
+```output.txt```:
+```
+{:min_value=>4, :max_value=>10.5}
+```
 #### Method ```numerics_not_in_range```
 
-##### Simple
+##### Integer Range
 
 ```example.rb```:
 ```ruby
@@ -219,4 +250,34 @@ p values
 ```output.txt```:
 ```
 {:too_small=>3, :too_large=>11}
+```
+
+##### Float Range
+
+```example.rb```:
+```ruby
+require 'test_values'
+
+values = NumericValues.numerics_not_in_range((4.5..10.5))
+p values
+```
+
+```output.txt```:
+```
+{:too_small=>4.499999999999999, :too_large=>10.500000000000002}
+```
+
+##### Mixed Range
+
+```example.rb```:
+```ruby
+require 'test_values'
+
+values = NumericValues.numerics_not_in_range((4..10.5))
+p values
+```
+
+```output.txt```:
+```
+{:too_small=>3, :too_large=>10.500000000000002}
 ```

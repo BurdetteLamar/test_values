@@ -1,4 +1,4 @@
-##### Simple
+##### Integer Range
 
 ```example.rb```:
 ```ruby

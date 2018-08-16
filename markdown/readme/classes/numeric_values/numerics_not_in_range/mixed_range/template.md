@@ -1,4 +1,4 @@
-##### Simple
+##### Mixed Range
 
 @[ruby](example.rb)
 
