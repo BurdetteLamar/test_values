@@ -53,7 +53,7 @@ end
 
 ```output.txt```:
 ```
-Run options: --seed 37303
+Run options: --seed 15541
 
 # Running:
 
@@ -66,15 +66,15 @@ Value "xxxxxxxxx" should raise an exception because it is too_long.
 Got exception #<ArgumentError: xxxxxxxxx>
 .
 
-Finished in 0.001486s, 672.8597 runs/s, 1345.7193 assertions/s.
+Finished in 0.001459s, 685.4216 runs/s, 1370.8433 assertions/s.
 
 1 runs, 2 assertions, 0 failures, 0 errors, 0 skips
 ```
 
 ## Classes
 
-- [NumericValues](#class-numericvalues)
 - [StringValues](#class-stringvalues)
+- [NumericValues](#class-numericvalues)
 
 ### Class ```StringValues```
 
@@ -180,7 +180,6 @@ p s
 "abcab"
 ```
 
-- [NumericValues](#class-numericvalues)
 
 ### Class ```NumericValues```
 
