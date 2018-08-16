@@ -20,7 +20,7 @@ class ValuesBase
     if obj.kind_of?(Float)
       unless obj.finite?
         message = "Parameter #{parameter_name} must be finite, not #{obj}"
-        raise Argument.error.new(message)
+        raise ArgumentError.new(message)
       end
     end
   end
