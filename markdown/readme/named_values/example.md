@@ -34,7 +34,7 @@ end
 
 ```output.txt```:
 ```
-Run options: --seed 48848
+Run options: --seed 54058
 
 # Running:
 
@@ -47,9 +47,9 @@ Value "xxxxxxxxx" should raise an exception because it is too_long.
 Got exception #<ArgumentError: xxxxxxxxx>
 .
 
-Finished in 0.001513s, 660.7503 runs/s, 1321.5006 assertions/s.
+Finished in 0.001543s, 647.9067 runs/s, 1295.8135 assertions/s.
 
 1 runs, 2 assertions, 0 failures, 0 errors, 0 skips
 ```
 
-(If you're nosy, you can peek at class [MyItems](my_items.rb).)
+(If you're nosy, you can peek at class [MyItems](example.rb).)
