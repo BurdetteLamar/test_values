@@ -5,6 +5,7 @@ namespace :build do
   task :readme do
     dir_path = File.dirname(__FILE__)
     Dir.chdir(dir_path) do
+      # Run each example.rb and make its template.
       ruby_file_name = 'example.rb'
       template_file_name = 'template.md'
       readme_file_path = File.join(
@@ -14,7 +15,6 @@ namespace :build do
                                  'README.md',
       )
       readme_file_path = File.absolute_path(readme_file_path)
-      puts readme_file_path
       Find.find('.') do |path|
         next unless File.directory?(path)
         Dir.chdir(path) do
@@ -24,6 +24,7 @@ namespace :build do
           end
         end
       end
+      # Make the  main README page.
       system("markdown_helper include --pristine #{template_file_name} #{readme_file_path}")
     end
   end

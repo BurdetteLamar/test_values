@@ -10,9 +10,9 @@ class StringValues < ValuesBase
   # @raise [TypeError] if +base_string+ is not a +String+.
   # @raise [RangeError] if +length+ is negative.
   def self.string_of_length(length, base_string=BASE_STRING)
-    self.verify_class('length', Integer, length)
-    self.verify_class('base_string', String, base_string)
-    self.verify_integer_size('length', (0..Float::INFINITY), length)
+    self.verify_kind_of('length', Integer, length)
+    self.verify_kind_of('base_string', String, base_string)
+    self.verify_integer_in_range('length', (0..Float::INFINITY), length)
     return '' if length == 0
     s = base_string
     while s.length < length
@@ -29,7 +29,7 @@ class StringValues < ValuesBase
   # @return [Hash] +Symbol+/+String+ pairs
   #    with keys +:min_length+ and +:max_length+.
   def self.strings_in_length_range(range, base_string=BASE_STRING)
-    self.verify_class('range', Range, range)
+    self.verify_kind_of('range', Range, range)
     {
         :min_length => self.string_of_length(range.first, base_string),
         :max_length => self.string_of_length(range.last, base_string),
@@ -44,7 +44,7 @@ class StringValues < ValuesBase
   # @return [Hash] +Symbol+/+String+ pairs
   #    with keys +:too_short+ and +:too_long+.
   def self.strings_not_in_length_range(range, base_string=BASE_STRING)
-    self.verify_class('range', Range, range)
+    self.verify_kind_of('range', Range, range)
     {
         :too_short => self.string_of_length(range.first - 1, base_string),
         :too_long => self.string_of_length(range.last + 1, base_string),

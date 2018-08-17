@@ -2,11 +2,11 @@
 
 [![Gem](https://img.shields.io/gem/v/test_values.svg?style=flat)](http://rubygems.org/gems/test_values "View this project in Rubygems")
 
-This project makes it easy to generate _and utilize_ certain kinds of values for testing software.
+This library makes it easy to generate _and utilize_ certain kinds of values for testing software.
 
 ## Named Values
 
-Generally speaking, a values method whose name is plural returns a hash of named values.
+Generally speaking, a method in this library whose name is plural returns a hash of named values.
 
 The calling test can iterate over the hash, using the names as labels and the values as test data:
 
@@ -15,6 +15,8 @@ The calling test can iterate over the hash, using the names as labels and the va
 require 'minitest/autorun'
 
 require 'test_values'
+
+require_relative 'my_items'
 
 class MyTest < Minitest::Test
 
@@ -34,26 +36,11 @@ class MyTest < Minitest::Test
   end
 
 end
-
-class MyItems
-
-  attr_accessor :items
-
-  def initialize
-    self.items = []
-  end
-
-  def add_item(item)
-    raise ArgumentError.new(item) unless (4..8).include?(item.length)
-    items.push(item)
-  end
-
-end
 ```
 
 ```output.txt```:
 ```
-Run options: --seed 24259
+Run options: --seed 8459
 
 # Running:
 
@@ -66,14 +53,17 @@ Value "xxxxxxxxx" should raise an exception because it is too_long.
 Got exception #<ArgumentError: xxxxxxxxx>
 .
 
-Finished in 0.001529s, 653.9277 runs/s, 1307.8554 assertions/s.
+Finished in 0.001472s, 679.3557 runs/s, 1358.7113 assertions/s.
 
 1 runs, 2 assertions, 0 failures, 0 errors, 0 skips
 ```
 
+(If you're nosy, you can peek at class [MyItems](https://raw.githubusercontent.com/BurdetteLamar/test_values/master/markdown/readme/named_values/my_items.rb).)
+
 ## Classes
 
 - [StringValues](#class-stringvalues)
+- [NumericValues](#class-numericvalues)
 
 ### Class ```StringValues```
 
@@ -177,4 +167,105 @@ p s
 ```output.txt```:
 ```
 "abcab"
+```
+
+
+### Class ```NumericValues```
+
+#### Methods
+
+- [numerics_in_range](#method-numerics_in_range)
+- [numerics_not_in_range](#method-numerics_not_in_range)
+
+#### Method ```numerics_in_range```
+
+##### Integer Range
+
+```example.rb```:
+```ruby
+require 'test_values'
+
+values = NumericValues.numerics_in_range((4..10))
+p values
+```
+
+```output.txt```:
+```
+{:min_value=>4, :max_value=>10}
+```
+
+##### Float Range
+
+```example.rb```:
+```ruby
+require 'test_values'
+
+values = NumericValues.numerics_in_range((4.5..10.5))
+p values
+```
+
+```output.txt```:
+```
+{:min_value=>4.5, :max_value=>10.5}
+```
+
+##### Mixed Range
+
+```example.rb```:
+```ruby
+require 'test_values'
+
+values = NumericValues.numerics_in_range((4..10.5))
+p values
+```
+
+```output.txt```:
+```
+{:min_value=>4, :max_value=>10.5}
+```
+#### Method ```numerics_not_in_range```
+
+##### Integer Range
+
+```example.rb```:
+```ruby
+require 'test_values'
+
+values = NumericValues.numerics_not_in_range((4..10))
+p values
+```
+
+```output.txt```:
+```
+{:too_small=>3, :too_large=>11}
+```
+
+##### Float Range
+
+```example.rb```:
+```ruby
+require 'test_values'
+
+values = NumericValues.numerics_not_in_range((4.5..10.5))
+p values
+```
+
+```output.txt```:
+```
+{:too_small=>4.499999999999999, :too_large=>10.500000000000002}
+```
+
+##### Mixed Range
+
+```example.rb```:
+```ruby
+require 'test_values'
+
+values = NumericValues.numerics_not_in_range((4..10.5))
+p values
+```
+
+```output.txt```:
+```
+{:too_small=>3, :too_large=>10.500000000000002}
 ```
