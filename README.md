@@ -2,11 +2,11 @@
 
 [![Gem](https://img.shields.io/gem/v/test_values.svg?style=flat)](http://rubygems.org/gems/test_values "View this project in Rubygems")
 
-This project makes it easy to generate _and utilize_ certain kinds of values for testing software.
+This library makes it easy to generate _and utilize_ certain kinds of values for testing software.
 
 ## Named Values
 
-Generally speaking, a values method whose name is plural returns a hash of named values.
+Generally speaking, a method in this library whose name is plural returns a hash of named values.
 
 The calling test can iterate over the hash, using the names as labels and the values as test data:
 
@@ -15,6 +15,8 @@ The calling test can iterate over the hash, using the names as labels and the va
 require 'minitest/autorun'
 
 require 'test_values'
+
+require_relative 'my_items'
 
 class MyTest < Minitest::Test
 
@@ -34,26 +36,11 @@ class MyTest < Minitest::Test
   end
 
 end
-
-class MyItems
-
-  attr_accessor :items
-
-  def initialize
-    self.items = []
-  end
-
-  def add_item(item)
-    raise ArgumentError.new(item) unless (4..8).include?(item.length)
-    items.push(item)
-  end
-
-end
 ```
 
 ```output.txt```:
 ```
-Run options: --seed 12424
+Run options: --seed 48848
 
 # Running:
 
@@ -66,10 +53,12 @@ Value "xxxxxxxxx" should raise an exception because it is too_long.
 Got exception #<ArgumentError: xxxxxxxxx>
 .
 
-Finished in 0.001481s, 675.3708 runs/s, 1350.7417 assertions/s.
+Finished in 0.001513s, 660.7503 runs/s, 1321.5006 assertions/s.
 
 1 runs, 2 assertions, 0 failures, 0 errors, 0 skips
 ```
+
+(If you're nosy, you can peek at class [MyItems](my_items.rb).)
 
 ## Classes
 

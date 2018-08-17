@@ -2,6 +2,8 @@ require 'minitest/autorun'
 
 require 'test_values'
 
+require_relative 'my_items'
+
 class MyTest < Minitest::Test
 
   def test_bad_item_length
@@ -17,21 +19,6 @@ class MyTest < Minitest::Test
       puts "Got exception #{e.inspect}"
     end
 
-  end
-
-end
-
-class MyItems
-
-  attr_accessor :items
-
-  def initialize
-    self.items = []
-  end
-
-  def add_item(item)
-    raise ArgumentError.new(item) unless (4..8).include?(item.length)
-    items.push(item)
   end
 
 end

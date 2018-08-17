@@ -7,3 +7,5 @@ The calling test can iterate over the hash, using the names as labels and the va
 @[ruby](example.rb)
 
 @[:code_block](output.txt)
+
+(If you're nosy, you can peek at class [MyItems](my_items.rb).)
