@@ -99,4 +99,77 @@ class StringValuesTest < Minitest::Test
     end
   end
 
+  def test_numerics_in_range
+    [
+        (-1..1),
+        (-1.1..1.1),
+        (-1..1.1),
+        (-1.1..1),
+        (0..Float::INFINITY),
+        (Float::INFINITY..Float::INFINITY),
+    ].each do |range|
+      expected_values = {
+          :min_value => range.first.to_s,
+          :max_value => range.last.to_s,
+      }
+      actual_values = StringValues.numerics_in_range(range)
+      assert_equal(expected_values, actual_values)
+    end
+    {
+        ('a'..'z') => format(NumericValuesTest::TYPE_ERROR_MESSAGE_FORMAT, 'range.first', Numeric, '"a"')
+    }.each_pair do |range, expected_message|
+      e = assert_raises(TypeError) do
+        actual_values = StringValues.numerics_in_range(range)
+      end
+      assert_equal(expected_message, e.message)
+    end
+    e = assert_raises(ArgumentError) do
+      StringValues.numerics_in_range((1..0))
+    end
+  end
+
+  def to_numeric(value)
+    value_i = value.to_i
+    return value_i if value_i.to_s == value
+    value.to_f
+  end
+
+  def test_numerica_not_in_range
+    [
+        (-1..1),
+        (-1..1.1),
+        (-1.1..1),
+        (-1.1..1.1),
+    ].each do |range|
+      actual_values = StringValues.numerics_not_in_range(range)
+      assert_equal([:too_small, :too_large], actual_values.keys)
+      too_small_string = actual_values.fetch(:too_small)
+      too_small_numeric = to_numeric(too_small_string)
+      assert_operator(too_small_numeric, :<, range.first)
+      too_large_string = actual_values.fetch(:too_large)
+      too_large_numeric = to_numeric(too_large_string)
+      assert_operator(too_large_numeric, :>, range.last)
+    end
+    {
+        ('a'..'z') => format(NumericValuesTest::TYPE_ERROR_MESSAGE_FORMAT, 'range.first', Numeric, '"a"')
+    }.each_pair do |range, expected_message|
+      e = assert_raises(TypeError) do
+        actual_values = StringValues.numerics_in_range(range)
+      end
+      assert_equal(expected_message, e.message)
+    end
+    {
+        (Float::INFINITY..Float::INFINITY) => format(NumericValuesTest::INFINITE_ARGUMENT_ERROR_FORMAT, 'range.first'),
+        (0..Float::INFINITY) => format(NumericValuesTest::INFINITE_ARGUMENT_ERROR_FORMAT, 'range.last'),
+    }.each_pair do |range, regexp|
+      e = assert_raises(ArgumentError) do
+        actual_values = StringValues.numerics_not_in_range(range)
+      end
+      assert_match(regexp, e.message)
+    end
+    e = assert_raises(ArgumentError) do
+      StringValues.numerics_not_in_range((1..0))
+    end
+  end
+
 end

@@ -51,4 +51,20 @@ class StringValues < ValuesBase
     }
   end
 
+  def self.numerics_in_range(range)
+    values = NumericValues.numerics_in_range(range)
+    values.each_pair do |key, value|
+      values.store(key, value.to_s)
+    end
+    values
+  end
+
+  def self.numerics_not_in_range(range)
+    values = NumericValues.numerics_not_in_range(range)
+    values.each_pair do |key, value|
+      values.store(key, value.to_s)
+    end
+    values
+  end
+
 end
