@@ -8,4 +8,4 @@ The calling test can iterate over the hash, using the names as labels and the va
 
 @[:code_block](output.txt)
 
-(If you're nosy, you can peek at class [MyItems](example.rb).)
+(If you're nosy, you can peek at class [MyItems](https://raw.githubusercontent.com/BurdetteLamar/test_values/master/markdown/readme/named_values/my_items.rb).)
