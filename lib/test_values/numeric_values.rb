@@ -12,18 +12,12 @@ class NumericValues < ValuesBase
 
   def self.numerics_not_in_range(range)
     self.verify_range_not_empty('range', range)
-    if range.first > range.last
-      inverted = true
-      first, last = range.last, range.first
-    else
-      inverted = false
-      first, last = range.first, range.last
-    end
+    first, last = range.first, range.last
     case
       when first.respond_to?(:pred)
         too_small = first.pred
       when first.respond_to?(:prev_float)
-        self.verify_finite_numeric(inverted ? 'range.last' : 'range.first', first)
+        self.verify_finite_numeric('range.first', first)
         too_small = first.prev_float
       else
         raise TypeError.new(first)
@@ -32,7 +26,7 @@ class NumericValues < ValuesBase
       when last.respond_to?(:succ)
         too_large = last.succ
       when last.respond_to?(:next_float)
-        self.verify_finite_numeric(inverted ? 'range.first' : 'range.last', last)
+        self.verify_finite_numeric('range.last', last)
         too_large = last.next_float
       else
         raise ArgumentError.new(last)
