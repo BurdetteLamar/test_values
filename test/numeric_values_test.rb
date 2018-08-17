@@ -29,24 +29,22 @@ class NumericValuesTest < Minitest::Test
       end
       assert_equal(expected_message, e.message)
     end
+    e = assert_raises(ArgumentError) do
+      NumericValues.numerics_in_range((1..0))
+    end
   end
 
   def test_numerica_not_in_range
     [
-        [-1, 1],
-        [-1, 1.1],
-        [-1.1, 1],
-        [-1.1, 1.1],
-    ].each do |pair|
-      [
-          (pair.first..pair.last),
-          (pair.last..pair.first),
-      ].each do |range|
-        actual_values = NumericValues.numerics_not_in_range(range)
-        assert_equal([:too_small, :too_large], actual_values.keys)
-        assert_operator(actual_values.fetch(:too_small), :<, range.first)
-        assert_operator(actual_values.fetch(:too_large), :>, range.last)
-      end
+        (-1..1),
+        (-1..1.1),
+        (-1.1..1),
+        (-1.1..1.1),
+    ].each do |range|
+      actual_values = NumericValues.numerics_not_in_range(range)
+      assert_equal([:too_small, :too_large], actual_values.keys)
+      assert_operator(actual_values.fetch(:too_small), :<, range.first)
+      assert_operator(actual_values.fetch(:too_large), :>, range.last)
     end
     {
         ('a'..'z') => format(TYPE_ERROR_MESSAGE_FORMAT, 'range.first', Numeric, '"a"')
@@ -57,14 +55,16 @@ class NumericValuesTest < Minitest::Test
       assert_equal(expected_message, e.message)
     end
     {
-        (Float::INFINITY..0) => format(INFINITE_ARGUMENT_ERROR_FORMAT, 'range.first'),
         (Float::INFINITY..Float::INFINITY) => format(INFINITE_ARGUMENT_ERROR_FORMAT, 'range.first'),
         (0..Float::INFINITY) => format(INFINITE_ARGUMENT_ERROR_FORMAT, 'range.last'),
     }.each_pair do |range, regexp|
       e = assert_raises(ArgumentError) do
         actual_values = NumericValues.numerics_not_in_range(range)
       end
-        assert_match(regexp, e.message)
+      assert_match(regexp, e.message)
+    end
+    e = assert_raises(ArgumentError) do
+      NumericValues.numerics_not_in_range((1..0))
     end
   end
 

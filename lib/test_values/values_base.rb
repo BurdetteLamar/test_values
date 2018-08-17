@@ -15,6 +15,15 @@ class ValuesBase
     raise RangeError.new(message)
   end
 
+  def self.verify_range_not_empty(parameter_name, range)
+    self.verify_kind_of(parameter_name, Range, range)
+    return if range.first == range.last
+    if range.each.size == 0
+      message = "Parameter #{parameter_name} must be a non-empty Range, not #{range}"
+      raise ArgumentError.new(message)
+    end
+  end
+
   def self.verify_finite_numeric(parameter_name, obj)
     self.verify_kind_of(parameter_name, Numeric, obj)
     if obj.kind_of?(Float)

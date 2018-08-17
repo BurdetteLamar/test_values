@@ -1,7 +1,7 @@
 class NumericValues < ValuesBase
 
   def self.numerics_in_range(range)
-    self.verify_kind_of('range', Range, range)
+    self.verify_range_not_empty('range', range)
     self.verify_kind_of('range.first', Numeric, range.first)
     self.verify_kind_of('range.last', Numeric, range.last)
     {
@@ -11,7 +11,7 @@ class NumericValues < ValuesBase
   end
 
   def self.numerics_not_in_range(range)
-    self.verify_kind_of('range', Range, range)
+    self.verify_range_not_empty('range', range)
     if range.first > range.last
       inverted = true
       first, last = range.last, range.first
