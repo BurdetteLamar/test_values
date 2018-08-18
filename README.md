@@ -40,7 +40,7 @@ end
 
 ```output.txt```:
 ```
-Run options: --seed 36358
+Run options: --seed 28462
 
 # Running:
 
@@ -53,7 +53,7 @@ Value "xxxxxxxxx" should raise an exception because it is too_long.
 Got exception #<ArgumentError: xxxxxxxxx>
 .
 
-Finished in 0.001479s, 675.9113 runs/s, 1351.8227 assertions/s.
+Finished in 0.001493s, 669.8345 runs/s, 1339.6691 assertions/s.
 
 1 runs, 2 assertions, 0 failures, 0 errors, 0 skips
 ```
@@ -72,6 +72,7 @@ Finished in 0.001479s, 675.9113 runs/s, 1351.8227 assertions/s.
 - [strings_in_length_range](#method-strings_in_length_range)
 - [strings_not_in_length_range](#method-strings_not_in_length_range)
 - [string_of_length](#method-string_of_length)
+- [misspelled](#method-misspelled)
 - [numerics_in_range](#method-numerics_in_range)
 - [numerics_not_in_range](#method-numerics_not_in_range)
 
@@ -169,6 +170,38 @@ p s
 ```output.txt```:
 ```
 "abcab"
+```
+
+#### Method ```misspelled```
+
+##### Simple
+
+```example.rb```:
+```ruby
+require 'test_values'
+
+s = StringValues.misspelled('my_string')
+p s
+```
+
+```output.txt```:
+```
+"ny_string"
+```
+
+##### Special Characters
+
+```example.rb```:
+```ruby
+require 'test_values'
+
+s = StringValues.misspelled('???What???')
+p s
+```
+
+```output.txt```:
+```
+"???Xhat???"
 ```
 
 #### Method ```numerics_in_range```

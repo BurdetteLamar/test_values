@@ -172,4 +172,43 @@ class StringValuesTest < Minitest::Test
     end
   end
 
+  def test_misspelled
+    {
+        :a => 'b',
+        :z => 'a',
+        :A => 'B',
+        :Z => 'A',
+        :'0' => '1',
+        :'9' => '0',
+        :_ => 'A',
+        :'#a' => '#b',
+        :'!z' => '!a',
+        :'.A' => '.B',
+        :'?Z' => '?A',
+        :',0' => ',1',
+        :';9' => ';0',
+        :'+_' => '+A',
+        :'a#' => 'b#',
+        :'z!' => 'a!',
+        :'A.' => 'B.',
+        :'Z?' => 'A?',
+        :'0,' => '1,',
+        :'9;' => '0;',
+        :'_+' => 'A+',
+    }.each_pair do |symbol, expected|
+      string = symbol.to_s
+      actual = StringValues.misspelled(string)
+      assert_equal(expected, actual)
+    end
+    {
+        '' => ArgumentError,
+        ' ' => ArgumentError,
+        true => TypeError,
+    }.each do |obj, klass|
+      e = assert_raises(klass) do
+        StringValues.misspelled(obj)
+      end
+    end
+  end
+
 end
