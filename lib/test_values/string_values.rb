@@ -36,6 +36,33 @@ class StringValues < ValuesBase
     }
   end
 
+  def self.misspelled(string)
+    self.verify_kind_of('string', String, string)
+    unless string.match(/\w/)
+      message = "Can only misspell string matching /\\w/, not '#{string}'"
+      raise ArgumentError.new(message)
+    end
+    misspelling = string.clone
+    index = nil
+    misspelling.scan(/./).each_with_index do |char, i|
+      next unless char.match(/\w/)
+      index = i
+      break
+    end
+    char = misspelling[index]
+    misspelling[index] = case
+                            when ('A'..'Z').include?(char)
+                              char == 'Z' ? 'A' : (1 + char.ord).chr
+                            when ('a'..'z').include?(char)
+                              char == 'z' ? 'a' : (1 + char.ord).chr
+                            when ('0'..'9').include?(char)
+                              char == '9' ? '0' : (1 + char.ord).chr
+                            else
+                              'A'
+                          end
+    misspelling
+  end
+
   # Return a hash of strings not within minimum and maximum length
   # for the given +range+.
   # @param range [Range] specifies the minimum and maximum string lengths.
