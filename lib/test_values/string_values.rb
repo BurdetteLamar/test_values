@@ -94,42 +94,42 @@ class StringValues < ValuesBase
     values
   end
 
-  def self.boolean
+  def self.booleans
     {
         :true => 'true',
         :false => 'false',
     }
   end
 
-  def self.not_string
+  def self.not_strings
     {
         :nil => nil,
         :not_string => 0,
     }
   end
 
-  def self.not_nonempty
-    self.not_string.merge(:empty => '')
+  def self.not_nonempties
+    self.not_strings.merge(:empty => '')
   end
 
-  def self.not_uuid
-    self.not_nonempty.merge(:invalid_digits => 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx')
+  def self.not_uuids
+    self.not_nonempties.merge(:invalid_digits => 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx')
   end
 
-  def self.not_boolean
-    self.not_nonempty.merge(:invalid_word => 'not_boolean')
+  def self.not_booleans
+    self.not_nonempties.merge(:invalid_word => 'not_boolean')
   end
 
-  def self.not_ip_address
-    self.not_nonempty.merge(:invalid_digits => 'xxx.xxx.xxx.xxx')
+  def self.not_ip_addresses
+    self.not_nonempties.merge(:invalid_digits => 'xxx.xxx.xxx.xxx')
   end
 
-  def self.not_nonnegative_integer
-    self.not_nonempty.merge(:negative => '-1')
+  def self.not_nonnegative_integers
+    self.not_nonempties.merge(:negative => '-1')
   end
 
-  def self.not_positive_integer
-    self.not_nonnegative_integer.merge(:zero => '0')
+  def self.not_positive_integers
+    self.not_nonnegative_integers.merge(:zero => '0')
   end
 
 end
