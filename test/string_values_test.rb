@@ -211,4 +211,63 @@ class StringValuesTest < Minitest::Test
     end
   end
 
+  def test_boolean
+    expected = {:true => 'true', :false => 'false'}
+    actual = StringValues.boolean
+    assert_equal(expected, actual)
+  end
+
+  def not_string
+    {:nil => nil, :not_string => 0}
+  end
+
+  def not_nonempty
+    not_string.merge(:empty => '')
+  end
+
+  def test_not_nonempty
+    expected = not_nonempty
+    actual = StringValues.not_nonempty
+    assert_equal(expected, actual)
+  end
+
+  def test_not_string
+    expected = not_string
+    actual = StringValues.not_string
+    assert_equal(expected, actual)
+  end
+
+  def test_not_uuid
+    expected = not_nonempty.merge(:invalid_digits => 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx')
+    actual = StringValues.not_uuid
+    assert_equal(expected, actual)
+  end
+
+  def test_not_boolean
+    expected = not_nonempty.merge(:invalid_word => 'not_boolean')
+    actual = StringValues.not_boolean
+    assert_equal(expected, actual)
+  end
+
+  def test_not_ip_address
+    expected = not_nonempty.merge(:invalid_digits => 'xxx.xxx.xxx.xxx')
+    actual = StringValues.not_ip_address
+    assert_equal(expected, actual)
+  end
+
+  def not_nonnegative_integer
+    not_nonempty.merge(:negative => '-1')
+  end
+  def test_not_nonnegative_integer
+    expected = not_nonnegative_integer
+    actual = StringValues.not_nonnegative_integer
+    assert_equal(expected, actual)
+  end
+
+  def test_not_positive_integer
+    expected = not_nonnegative_integer.merge(:zero => '0')
+    actual = StringValues.not_positive_integer
+    assert_equal(expected, actual)
+  end
+
 end
