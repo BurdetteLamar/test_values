@@ -211,7 +211,7 @@ class StringValuesTest < Minitest::Test
     end
   end
 
-  def test_boolean
+  def test_booleans
     expected = {:true => 'true', :false => 'false'}
     actual = StringValues.booleans
     assert_equal(expected, actual)
@@ -231,19 +231,19 @@ class StringValuesTest < Minitest::Test
     assert_equal(expected, actual)
   end
 
-  def test_not_string
+  def test_not_strings
     expected = not_strings
     actual = StringValues.not_strings
     assert_equal(expected, actual)
   end
 
-  def test_not_uuid
+  def test_not_uuids
     expected = not_nonempties.merge(:invalid_digits => 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx')
     actual = StringValues.not_uuids
     assert_equal(expected, actual)
   end
 
-  def test_not_boolean
+  def test_not_booleans
     expected = not_nonempties.merge(:invalid_word => 'not_boolean')
     actual = StringValues.not_booleans
     assert_equal(expected, actual)

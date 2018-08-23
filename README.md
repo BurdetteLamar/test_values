@@ -40,7 +40,7 @@ end
 
 ```output.txt```:
 ```
-Run options: --seed 28462
+Run options: --seed 14388
 
 # Running:
 
@@ -53,7 +53,7 @@ Value "xxxxxxxxx" should raise an exception because it is too_long.
 Got exception #<ArgumentError: xxxxxxxxx>
 .
 
-Finished in 0.001493s, 669.8345 runs/s, 1339.6691 assertions/s.
+Finished in 0.001472s, 679.3515 runs/s, 1358.7030 assertions/s.
 
 1 runs, 2 assertions, 0 failures, 0 errors, 0 skips
 ```
@@ -75,6 +75,14 @@ Finished in 0.001493s, 669.8345 runs/s, 1339.6691 assertions/s.
 - [misspelled](#method-misspelled)
 - [numerics_in_range](#method-numerics_in_range)
 - [numerics_not_in_range](#method-numerics_not_in_range)
+- [booleans](#method-booleans)
+- [not_strings](#method-not_strings)
+- [not_nonempties](#method-not_nonempties)
+- [not_uuids](#method-not_uuids)
+- [not_booleans](#method-not_booleans)
+- [not_ip_addresses](#method-not_ip_addresses)
+- [not_nonnegative_integers](#method-not_nonnegative_integers)
+- [not_positive_integers](#method-not_positive_integers)
 
 #### Method ```strings_in_length_range```
 
@@ -296,6 +304,142 @@ p values
 ```output.txt```:
 ```
 {:too_small=>"3", :too_large=>"10.500000000000002"}
+```
+
+#### Method ```strings_in_length_range```
+
+##### Simple
+
+```example.rb```:
+```ruby
+require 'test_values'
+
+values = StringValues.booleans
+p values
+```
+
+```output.txt```:
+```
+{:true=>"true", :false=>"false"}
+```
+
+#### Method ```strings_in_length_range```
+
+##### Simple
+
+```example.rb```:
+```ruby
+require 'test_values'
+
+values = StringValues.not_strings
+p values
+```
+
+```output.txt```:
+```
+{:nil=>nil, :not_string=>0}
+```
+
+#### Method ```strings_in_length_range```
+
+##### Simple
+
+```example.rb```:
+```ruby
+require 'test_values'
+
+values = StringValues.not_nonempties
+p values
+```
+
+```output.txt```:
+```
+{:nil=>nil, :not_string=>0, :empty=>""}
+```
+
+#### Method ```strings_in_length_range```
+
+##### Simple
+
+```example.rb```:
+```ruby
+require 'test_values'
+
+values = StringValues.not_uuids
+p values
+```
+
+```output.txt```:
+```
+{:nil=>nil, :not_string=>0, :empty=>"", :invalid_digits=>"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"}
+```
+
+#### Method ```strings_in_length_range```
+
+##### Simple
+
+```example.rb```:
+```ruby
+require 'test_values'
+
+values = StringValues.not_booleans
+p values
+```
+
+```output.txt```:
+```
+{:nil=>nil, :not_string=>0, :empty=>"", :invalid_word=>"not_boolean"}
+```
+
+#### Method ```strings_in_length_range```
+
+##### Simple
+
+```example.rb```:
+```ruby
+require 'test_values'
+
+values = StringValues.not_ip_addresses
+p values
+```
+
+```output.txt```:
+```
+{:nil=>nil, :not_string=>0, :empty=>"", :invalid_digits=>"xxx.xxx.xxx.xxx"}
+```
+
+#### Method ```strings_in_length_range```
+
+##### Simple
+
+```example.rb```:
+```ruby
+require 'test_values'
+
+values = StringValues.not_nonnegative_integers
+p values
+```
+
+```output.txt```:
+```
+{:nil=>nil, :not_string=>0, :empty=>"", :negative=>"-1"}
+```
+
+#### Method ```strings_in_length_range```
+
+##### Simple
+
+```example.rb```:
+```ruby
+require 'test_values'
+
+values = StringValues.not_positive_integers
+p values
+```
+
+```output.txt```:
+```
+{:nil=>nil, :not_string=>0, :empty=>"", :negative=>"-1", :zero=>"0"}
 ```
 
 
