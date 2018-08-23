@@ -1,3 +1,3 @@
-#### Method ```strings_in_length_range```
+#### Method ```booleans```
 
 @[:markdown](simple/template.md)

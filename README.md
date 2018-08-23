@@ -40,7 +40,7 @@ end
 
 ```output.txt```:
 ```
-Run options: --seed 14388
+Run options: --seed 9626
 
 # Running:
 
@@ -53,7 +53,7 @@ Value "xxxxxxxxx" should raise an exception because it is too_long.
 Got exception #<ArgumentError: xxxxxxxxx>
 .
 
-Finished in 0.001472s, 679.3515 runs/s, 1358.7030 assertions/s.
+Finished in 0.001457s, 686.1600 runs/s, 1372.3200 assertions/s.
 
 1 runs, 2 assertions, 0 failures, 0 errors, 0 skips
 ```
@@ -306,7 +306,7 @@ p values
 {:too_small=>"3", :too_large=>"10.500000000000002"}
 ```
 
-#### Method ```strings_in_length_range```
+#### Method ```booleans```
 
 ##### Simple
 
@@ -323,7 +323,7 @@ p values
 {:true=>"true", :false=>"false"}
 ```
 
-#### Method ```strings_in_length_range```
+#### Method ```not_strings```
 
 ##### Simple
 
@@ -340,7 +340,7 @@ p values
 {:nil=>nil, :not_string=>0}
 ```
 
-#### Method ```strings_in_length_range```
+#### Method ```not_nonempties```
 
 ##### Simple
 
@@ -357,7 +357,7 @@ p values
 {:nil=>nil, :not_string=>0, :empty=>""}
 ```
 
-#### Method ```strings_in_length_range```
+#### Method ```not_uuids```
 
 ##### Simple
 
@@ -374,7 +374,7 @@ p values
 {:nil=>nil, :not_string=>0, :empty=>"", :invalid_digits=>"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"}
 ```
 
-#### Method ```strings_in_length_range```
+#### Method ```not_booleans```
 
 ##### Simple
 
@@ -391,7 +391,7 @@ p values
 {:nil=>nil, :not_string=>0, :empty=>"", :invalid_word=>"not_boolean"}
 ```
 
-#### Method ```strings_in_length_range```
+#### Method ```not_ip_addresses```
 
 ##### Simple
 
@@ -408,7 +408,7 @@ p values
 {:nil=>nil, :not_string=>0, :empty=>"", :invalid_digits=>"xxx.xxx.xxx.xxx"}
 ```
 
-#### Method ```strings_in_length_range```
+#### Method ```not_nonnegative_integers```
 
 ##### Simple
 
@@ -425,7 +425,7 @@ p values
 {:nil=>nil, :not_string=>0, :empty=>"", :negative=>"-1"}
 ```
 
-#### Method ```strings_in_length_range```
+#### Method ```not_positive_integers```
 
 ##### Simple
 

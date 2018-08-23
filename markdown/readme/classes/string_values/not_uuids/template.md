@@ -1,3 +1,3 @@
-#### Method ```strings_in_length_range```
+#### Method ```not_uuids```
 
 @[:markdown](simple/template.md)

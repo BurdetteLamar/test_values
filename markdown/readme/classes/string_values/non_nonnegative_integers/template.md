@@ -1,3 +1,3 @@
-#### Method ```strings_in_length_range```
+#### Method ```nonnegative_integers```
 
 @[:markdown](simple/template.md)
