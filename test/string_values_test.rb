@@ -119,11 +119,11 @@ class StringValuesTest < Minitest::Test
         ('a'..'z') => format(NumericValuesTest::TYPE_ERROR_MESSAGE_FORMAT, 'range.first', Numeric, '"a"')
     }.each_pair do |range, expected_message|
       e = assert_raises(TypeError) do
-        actual_values = StringValues.numerics_in_range(range)
+        StringValues.numerics_in_range(range)
       end
       assert_equal(expected_message, e.message)
     end
-    e = assert_raises(ArgumentError) do
+    assert_raises(ArgumentError) do
       StringValues.numerics_in_range((1..0))
     end
   end
@@ -154,7 +154,7 @@ class StringValuesTest < Minitest::Test
         ('a'..'z') => format(NumericValuesTest::TYPE_ERROR_MESSAGE_FORMAT, 'range.first', Numeric, '"a"')
     }.each_pair do |range, expected_message|
       e = assert_raises(TypeError) do
-        actual_values = StringValues.numerics_in_range(range)
+        StringValues.numerics_in_range(range)
       end
       assert_equal(expected_message, e.message)
     end
@@ -163,11 +163,11 @@ class StringValuesTest < Minitest::Test
         (0..Float::INFINITY) => format(NumericValuesTest::INFINITE_ARGUMENT_ERROR_FORMAT, 'range.last'),
     }.each_pair do |range, regexp|
       e = assert_raises(ArgumentError) do
-        actual_values = StringValues.numerics_not_in_range(range)
+        StringValues.numerics_not_in_range(range)
       end
       assert_match(regexp, e.message)
     end
-    e = assert_raises(ArgumentError) do
+    assert_raises(ArgumentError) do
       StringValues.numerics_not_in_range((1..0))
     end
   end
@@ -205,7 +205,7 @@ class StringValuesTest < Minitest::Test
         ' ' => ArgumentError,
         true => TypeError,
     }.each do |obj, klass|
-      e = assert_raises(klass) do
+      assert_raises(klass) do
         StringValues.misspelled(obj)
       end
     end

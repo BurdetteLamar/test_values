@@ -25,11 +25,11 @@ class NumericValuesTest < Minitest::Test
         ('a'..'z') => format(TYPE_ERROR_MESSAGE_FORMAT, 'range.first', Numeric, '"a"')
     }.each_pair do |range, expected_message|
       e = assert_raises(TypeError) do
-        actual_values = NumericValues.numerics_in_range(range)
+        NumericValues.numerics_in_range(range)
       end
       assert_equal(expected_message, e.message)
     end
-    e = assert_raises(ArgumentError) do
+    assert_raises(ArgumentError) do
       NumericValues.numerics_in_range((1..0))
     end
   end
@@ -50,7 +50,7 @@ class NumericValuesTest < Minitest::Test
         ('a'..'z') => format(TYPE_ERROR_MESSAGE_FORMAT, 'range.first', Numeric, '"a"')
     }.each_pair do |range, expected_message|
       e = assert_raises(TypeError) do
-        actual_values = NumericValues.numerics_in_range(range)
+        NumericValues.numerics_in_range(range)
       end
       assert_equal(expected_message, e.message)
     end
@@ -59,11 +59,11 @@ class NumericValuesTest < Minitest::Test
         (0..Float::INFINITY) => format(INFINITE_ARGUMENT_ERROR_FORMAT, 'range.last'),
     }.each_pair do |range, regexp|
       e = assert_raises(ArgumentError) do
-        actual_values = NumericValues.numerics_not_in_range(range)
+        NumericValues.numerics_not_in_range(range)
       end
       assert_match(regexp, e.message)
     end
-    e = assert_raises(ArgumentError) do
+    assert_raises(ArgumentError) do
       NumericValues.numerics_not_in_range((1..0))
     end
   end
